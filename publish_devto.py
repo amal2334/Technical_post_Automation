@@ -136,7 +136,7 @@ def main():
     topic_type = classify_topic(topic)
     print(f"Type: {topic_type}")
     
-    title = f"Data Analyst Guide: Mastering {topic}"
+    title = f"Data Analyst Guide: Mastering {topic}"  # ✅ title defined here
     
     client = Groq(api_key=GROQ_API_KEY)
     prompt = get_topic_prompt(topic, topic_type)
@@ -164,18 +164,18 @@ def main():
     print(f"Content: {len(content)} characters ({topic_type} mode)")
     print(f"Preview:\n{content[:600]}...")
     
-   # Auto-publish in GitHub Actions
-print("Auto-publishing to DEV.TO...")
-url, article_id = post_devto(title, content)
-if url:
-    print(f"✅ Published: {url}")
-    print(f"ID: {article_id}")
-else:
-    print("Failed to publish.")
-    exit(1)
-
+    # ✅ AUTO-PUBLISH FOR GITHUB ACTIONS
+    print("Auto-publishing to DEV.TO...")
+    url, article_id = post_devto(title, content)  # ✅ Now title IS defined
+    if url:
+        print(f"✅ Published: {url}")
+        print(f"ID: {article_id}")
+    else:
+        print("Failed to publish.")
+        exit(1)
 
 
 if __name__ == "__main__":
     main()
+
 
