@@ -164,17 +164,18 @@ def main():
     print(f"Content: {len(content)} characters ({topic_type} mode)")
     print(f"Preview:\n{content[:600]}...")
     
-    confirm = input("\nPublish to DEV.TO? (y/N): ").lower()
-    if confirm == 'y':
-        url, article_id = post_devto(title, content)
-        if url:
-            print(f"\n✅ Published: {url}")
-            print(f"ID: {article_id}")
-        else:
-            print("Failed.")
-    else:
-        print("Cancelled.")
+   # Auto-publish in GitHub Actions
+print("Auto-publishing to DEV.TO...")
+url, article_id = post_devto(title, content)
+if url:
+    print(f"✅ Published: {url}")
+    print(f"ID: {article_id}")
+else:
+    print("Failed to publish.")
+    exit(1)
+
 
 
 if __name__ == "__main__":
     main()
+
